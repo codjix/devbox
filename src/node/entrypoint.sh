@@ -14,8 +14,7 @@ if [ -f /app/node/install ]; then
   ln -s $DIR/pnpm/bin/pnpm.cjs /usr/local/bin/pnpm
   ln -s $DIR/pnpm/bin/pnpx.cjs /usr/local/bin/pnpx
 
-  env SHELL="fish" /usr/local/bin/pnpm setup > /dev/null 2>&1
-  source /root/.config/fish/config.fish
+  env SHELL="fish" fish -c "pnpm setup" > /dev/null 2>&1
 
   rm /app/node/install /app/node/pnpm.tgz
   printf "\n[DONE] Prapare NodeJS \n"
