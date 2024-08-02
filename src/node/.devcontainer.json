@@ -1,0 +1,9 @@
+{
+  "name": "DevBox Node Container",
+  "image": "tdim/devbox:node",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "echo 'Container is ready!'",
+  "runArgs": ["--entrypoint", "/app/node/entrypoint.sh", "fish"],
+  "forwardPorts": ["3002:3000"],
+  "remoteUser": "root"
+}

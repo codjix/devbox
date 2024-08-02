@@ -1,0 +1,14 @@
+{
+  "name": "DevBox Custom Container",
+  // "image": "test:latest", // use if necessary
+  "build": {
+    "context": ".",
+    "dockerfile": "Dockerfile",
+    "target": "devcontainer"
+  },
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "echo 'Container is ready!'",
+  "runArgs": ["--entrypoint", "/app/custom/entrypoint.sh", "fish"],
+  "forwardPorts": ["3000:3000"],
+  "remoteUser": "root"
+}

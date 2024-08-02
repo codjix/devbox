@@ -1,0 +1,9 @@
+{
+  "name": "DevBox Core Container",
+  "image": "tdim/devbox:latest",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "echo 'Container is ready!'",
+  "runArgs": ["--entrypoint", "/app/core/entrypoint.sh", "fish"],
+  "forwardPorts": ["3001:3000"],
+  "remoteUser": "root"
+}

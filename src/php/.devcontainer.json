@@ -1,0 +1,9 @@
+{
+  "name": "DevBox PHP Container",
+  "image": "tdim/devbox:php",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "echo 'Container is ready!'",
+  "runArgs": ["--entrypoint", "/app/php/entrypoint.sh", "fish"],
+  "forwardPorts": ["3003:3000"],
+  "remoteUser": "root"
+}
