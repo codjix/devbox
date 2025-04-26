@@ -1,5 +1,4 @@
 #!/bin/bash
-# clear
 
 banner() {
     echo ""
@@ -25,22 +24,17 @@ usage() {
     echo "  -v, --version            Print version"
     echo ""
     echo "Image Types:"
-    echo "  latest                   Build core image with main dependencies"
-    echo "  core                     Build core image with main dependencies"
-    echo "  node                     Build node image from node.Dockerfile"
-    echo "  php                      Build php  image from php.Dockerfile"
-    # echo "  go                       Build go   image from go.Dockerfile"
+    echo "  latest                   Core image."
+    echo "  bun                      Bun image."
+    echo "  node                     Node.js image."
+    echo "  php                      PHP image."
     echo ""
     exit 1
 }
 
-# Default message if not provided
-MESSAGE="developer did not provide any changes"
-
 # Parse command line options
 while [[ $# -gt 0 ]]; do
-    key="$1"
-    case $key in
+    case "$1" in
         -h|--help)
             banner
             usage
@@ -61,30 +55,22 @@ if [ $# -eq 0 ]; then
     usage
 fi
 
+banner
 # Check for the image type
 case "$1" in
     latest)
-        banner
-        docker buildx build -t tdim/devbox:latest -f ./Dockerfile .
+        docker buildx build -t codjix/devbox:latest -f ./src/latest/Dockerfile .
         ;;
-    core)
-        banner
-        docker buildx build -t tdim/devbox:core -f ./Dockerfile .
+    bun)
+        docker buildx build -t codjix/devbox:bun -f ./src/bun/Dockerfile .
         ;;
     node)
-        banner
-        docker buildx build -t tdim/devbox:node -f ./node.Dockerfile .
+        docker buildx build -t codjix/devbox:node -f ./src/node/Dockerfile .
         ;;
     php)
-        banner
-        docker buildx build -t tdim/devbox:php -f ./php.Dockerfile .
+        docker buildx build -t codjix/devbox:php -f ./src/php/Dockerfile .
         ;;
-    # go)
-    #     banner
-    #     docker buildx build -t tdim/devbox:go -f ./go.Dockerfile .
-    #     ;;
     *)
-        banner
         # Invalid image type
         usage "Invalid option or image type: $1"
         exit 1
