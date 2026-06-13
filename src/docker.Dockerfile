@@ -1,9 +1,9 @@
-# Base image
-FROM codjix/devbox:latest
-
 # Image inputs
 ARG VARIANT="docker"
 ARG VERSION=1.0.0
+
+# Base image
+FROM codjix/devbox:${VERSION}
 
 # Image info
 LABEL org.opencontainers.image.title="DevBox - ${VARIANT}" \
