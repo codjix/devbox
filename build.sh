@@ -25,9 +25,7 @@ usage() {
     echo ""
     echo "Image Types:"
     echo "  latest                   Core image."
-    echo "  bun                      Bun image."
-    echo "  node                     Node.js image."
-    echo "  php                      PHP image."
+    echo "  docker                   Docker image."
     echo ""
     exit 1
 }
@@ -59,16 +57,10 @@ banner
 # Check for the image type
 case "$1" in
     latest)
-        docker buildx build -t codjix/devbox:latest -f ./src/latest/Dockerfile .
+        docker buildx build -t codjix/devbox:latest -f ./src/Dockerfile .
         ;;
-    bun)
-        docker buildx build -t codjix/devbox:bun -f ./src/bun/Dockerfile .
-        ;;
-    node)
-        docker buildx build -t codjix/devbox:node -f ./src/node/Dockerfile .
-        ;;
-    php)
-        docker buildx build -t codjix/devbox:php -f ./src/php/Dockerfile .
+    docker)
+        docker buildx build -t codjix/devbox:docker -f ./src/docker.Dockerfile .
         ;;
     *)
         # Invalid image type
