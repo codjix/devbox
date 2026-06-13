@@ -1,27 +1,43 @@
-# DevBox Container
+# DevBox
 
-DevContainers images based on Alpine Linux
+DevContainers images based on Alpine Linux.
 
-## Usage
+## Quick Start
 
-All variants are avilable to pull from Docker hub, just replace `latest` with the variant you need:
+Start the core image:
 
 ```bash
-docker pull codjix/devbox:latest
+docker run --rm -it codjix/devbox:latest
+```
+
+Start the Docker image with access to the host Docker daemon:
+
+```bash
+docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock codjix/devbox:docker
 ```
 
 ## Variants
 
-| **Tag**    | **Description**                                                 |
-| ---------- | --------------------------------------------------------------- |
-| **latest** | `Latest core` image for the development environment.            |
-| **bun**    | `Bun.sh` image for running JavaScript applications.             |
-| **node**   | `Node.js` image for running JavaScript applications.            |
-| **php**    | `PHP` image for building and running PHP applications.          |
-| **more**   | [Suggest a new variant](https://github.com/codjix/devbox/pulls) |
+| Tag | Description |
+| --- | --- |
+| `latest` | Core image with common development tools. |
+| `docker` | Core image with Docker CLI and Docker Compose. |
 
-Please read variant's docs for more details.
+## What's Included
+
+- **System:** `alpine` `sudo` `su-exec` `fish`
+- **Development:** `git` `github-cli` `curl` `wget` `jq` `openssl`
+- **Utilities:** `nano` `tree` `btop` `ncdu` `lsd` `mc` `screen`
+- **Extras:** `nmap` `procps` `net-tools` `p7zip` `zip`
+- **Docker:** `docker-cli` `docker-compose`
+
+## Build
+
+```bash
+./build.sh latest
+./build.sh docker
+```
 
 ## License
 
-- [MIT License](./LICENSE)
+[MIT License](./LICENSE)
